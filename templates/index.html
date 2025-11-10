@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOTEX AI ULTRA PREDICTOR v4</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script>
+    async function getPrediction(){
+      const status = document.getElementById('status');
+      const output = document.getElementById('output');
+      status.innerHTML = "<span class='blink'>CONNECTING TO SERVER...</span>";
+      try {
+        const res = await fetch('/predict');
+        const data = await res.json();
+        if(data.error){
+          status.innerHTML = "<span class='error'>" + data.error + "</span>";
+          return;
+        }
+        status.innerHTML = "<span class='success'>" + data.status + "</span>";
+        document.getElementById('nums').innerHTML = "LAST 4 NUMBERS ➜ " + data.nums.join(" , ");
+        document.getElementById('prediction').innerHTML = "PREDICTION ➜ <b class='glow'>" + data.prediction + "</b>";
+        document.getElementById('confidence').innerHTML = "CONFIDENCE ➜ " + data.confidence;
+        document.getElementById('time').innerHTML = "UPDATED ➜ " + data.time;
+      } catch (e){
+        status.innerHTML = "<span class='error'>SERVER DISCONNECTED ❌</span>";
+      }
+    }
+
+    // Auto-refresh every 15 sec
+    setInterval(getPrediction, 15000);
+    window.onload = getPrediction;
+  </script>
+</head>
+<body>
+  <div class="terminal">
+    <h1 class="title">💀 NOTEX AI ULTRA PREDICTOR v4 💀</h1>
+    <div id="status" class="status blink">WAITING FOR CONNECTION...</div>
+    <div id="output">
+      <div id="nums"></div>
+      <div id="prediction"></div>
+      <div id="confidence"></div>
+      <div id="time"></div>
+    </div>
+    <button onclick="getPrediction()">🔁 RECONNECT</button>
+    <p class="footer">BN LAST KING ACTIVE | AI SERVER LIVE</p>
+  </div>
+</body>
+</html>
