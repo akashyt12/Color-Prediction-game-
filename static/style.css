@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+body {
+  background-color: #000;
+  color: #00ff6a;
+  font-family: 'Share Tech Mono', monospace;
+  text-align: center;
+  padding-top: 50px;
+}
+
+.terminal {
+  border: 2px solid #00ff6a;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+  padding: 30px;
+  box-shadow: 0 0 20px #00ff6a;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.title {
+  font-size: 1.3em;
+  color: #00ff6a;
+  text-shadow: 0 0 8px #00ff6a;
+  margin-bottom: 25px;
+  animation: flicker 2s infinite;
+}
+
+.status {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #fffd77;
+}
+
+.blink {
+  animation: blink 1s step-end infinite alternate;
+}
+
+.glow {
+  color: #00ffcc;
+  text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+}
+
+.success {
+  color: #00ff00;
+  text-shadow: 0 0 8px #00ff00;
+}
+
+.error {
+  color: #ff4444;
+  text-shadow: 0 0 8px #ff4444;
+}
+
+button {
+  background: #00ff6a;
+  color: #000;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+button:hover {
+  background: #00ffaa;
+  box-shadow: 0 0 15px #00ffaa;
+}
+
+.footer {
+  font-size: 0.8em;
+  color: #777;
+  margin-top: 20px;
+}
+
+@keyframes blink {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
+}
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.9; text-shadow: 0 0 5px #00ff6a; }
+  100% { opacity: 1; }
+}
